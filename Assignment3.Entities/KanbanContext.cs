@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace Assignment3.Entities{
     public partial class KanbanContext : DbContext {
@@ -25,5 +27,6 @@ namespace Assignment3.Entities{
         }
 
         partial void onModelCreatingPartial(ModelBuilder modelBuilder);
+
     }
 }
