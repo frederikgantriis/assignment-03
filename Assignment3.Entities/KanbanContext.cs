@@ -9,9 +9,13 @@ namespace Assignment3.Entities{
     public partial class KanbanContext : DbContext {
         public KanbanContext(DbContextOptions<KanbanContext> options) 
             : base(options) { }
+
+        
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
+
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<User>(entity => {
                 entity.Property(e => e.name).IsRequired();
@@ -25,8 +29,6 @@ namespace Assignment3.Entities{
                 entity.Property(e => e.name).IsRequired().HasMaxLength(50);
             });
         }
-
-        partial void onModelCreatingPartial(ModelBuilder modelBuilder);
 
     }
 }

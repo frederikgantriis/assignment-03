@@ -14,7 +14,7 @@ dotnet user-secrets set "ConnectionStrings:Kanban" "Server=localhost;Database=Ka
 dotnet add package Microsoft.Extensions.Configuration.UserSecrets
 ```
 
-//TODO: Get "dotnet ef dbcontext scaffold "Server=localhost;Database=tempdb;User Id=sa;Password=assingment3;Trusted_Connection=False;Encrypt=False" Microsoft.EntityFrameworkCore.SqlServer --data-annotations" to work
+//TODO: Add migration
 
 
 
