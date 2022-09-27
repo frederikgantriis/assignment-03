@@ -1,34 +1,52 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore.Design;
 
-namespace Assignment3.Entities{
-    public partial class KanbanContext : DbContext {
-        public KanbanContext(DbContextOptions<KanbanContext> options) 
-            : base(options) { }
+namespace Assignment3.Entities;
+public partial class KanbanContext : DbContext
+{
+    public KanbanContext(DbContextOptions<KanbanContext> options)
+        : base(options) { }
 
-        
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Task> Tasks { get; set; }
-        public virtual DbSet<Tag> Tags { get; set; }
 
-        
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {
-            modelBuilder.Entity<User>(entity => {
-                entity.Property(e => e.name).IsRequired();
-                entity.Property(e => e.email).IsRequired();
-            });
-            modelBuilder.Entity<Task>(entity => {
-                entity.Property(e => e.title).IsRequired();
-                entity.Property(e => e.description).IsRequired(false);
-            });
-            modelBuilder.Entity<Tag>(entity => {
-                entity.Property(e => e.name).IsRequired().HasMaxLength(50);
-            });
-        }
+    public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<Task> Tasks { get; set; }
+    public virtual DbSet<Tag> Tags { get; set; }
 
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Task>(e =>
+        {
+            e.Property(c => c.title).IsRequired();
+            //TODO: Impelement AssignedTo with optional reference to User entity
+            e.Property(c => c.description).HasMaxLength(100);
+            e.Property(c => c.state).IsRequired();
+            e.Property(c => c.state).HasConversion(
+                v => v.ToString(),
+                v => (State)Enum.Parse(typeof(State), v));
+
+            //TODO: Implement tag "many-to-many" reference to Tag entity
+        });
+
+        modelBuilder.Entity<User>(e =>
+        {
+            e.Property(c => c.name)
+                .IsRequired()
+                .HasMaxLength(100);
+                
+            //TOOD: Make email unique
+            e.Property(c => c.email)
+                .IsRequired()
+                .HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<Tag>(e =>
+        {
+            //TODO: Make name unique
+            e.Property(c => c.name)
+                .IsRequired()
+                .HasMaxLength(50);
+            //TODO: Implement task "many-to-many" reference to Task entity
+        });
     }
 }
+
