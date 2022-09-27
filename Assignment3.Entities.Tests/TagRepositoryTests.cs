@@ -13,6 +13,7 @@ public class TagRepositoryTests
 
     public TagRepositoryTests()
     {
+        //TODO: Fix connection string
         var connection = new SqlConnection("Server=localhost;Database=msdb;User Id=sa;Password=Pamcr.microsoft.com/mssql/server:2019-latestw0rd2022;Trusted_Connection=False;Encrypt=False");
         connection.Open();
         var builder = new DbContextOptionsBuilder<KanbanContext>();
