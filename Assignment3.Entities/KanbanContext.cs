@@ -8,8 +8,8 @@ public partial class KanbanContext : DbContext
 
 
     public virtual DbSet<User> Users { get; set; }
-    public virtual DbSet<Task> Tasks { get; set; }
-    public virtual DbSet<Tag> Tags { get; set; }
+    public DbSet<Tag> Tags => Set<Tag>();
+    public DbSet<Task> Tasks => Set<Task>();
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

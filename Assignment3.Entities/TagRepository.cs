@@ -12,15 +12,24 @@ public class TagRepository : ITagRepository
 
     public (Response Response, int TagId) Create(TagCreateDTO tag)
     {
-        var entity = new Tag
+        var entity = context.Tags.FirstOrDefault(c => c.name == tag.Name);
+        Response response;
+
+        if (entity is null)
         {
-            name = tag.Name
-        };
+            entity = new Tag { name = tag.Name};
 
-        context.Tags.Add(entity);
-        context.SaveChanges();
+            context.Tags.Add(entity);
+            context.SaveChanges();
 
-        return (Response.Created, entity.id);
+            response = Response.Created;
+        }
+        else
+        {
+            response = Response.Conflict;
+        }
+
+        return (response, entity.id);
     }
 
     public Response Delete(int tagId, bool force = false)

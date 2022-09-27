@@ -2,7 +2,7 @@ namespace Assignment3.Entities;
 
 public class Task
 {
-    public int id { get; set; }
+    public int id { get; init; }
     public string title { get; set; }
     public User assignedTo { get; set; }
     public string? description { get; set; }
