@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-
 namespace Assignment3.Entities;
+
 public partial class KanbanContext : DbContext
 {
     public KanbanContext(DbContextOptions<KanbanContext> options)
