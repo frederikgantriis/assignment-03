@@ -1,0 +1,55 @@
+@startuml
+
+class Project {
+    name : String
+    StartDate : Date
+    EndDate : Date
+    ProjectManager : ProjectManager
+}
+
+class ProjectManager {
+    Name : string
+    Phone : int 
+    Team : Team
+    -char startProject(String Name)
+    -void terminateProject(String Name)
+}
+
+class Team {
+    TeamLead: ProjectManager
+    TeamMembers : List<Developers>
+    Project : Project
+}
+
+class Requirements {
+    completionPercentage : int
+    description : string
+}
+
+class System {
+    completionPercentage : int
+    Description : string
+}
+
+
+ProjectManager <. Project
+Project <- ProjectManager
+ProjectManager --> Team
+Project <. Team
+Team ..> Developer
+Requirements --# Project : input
+Project --# System : output
+
+
+
+
+
+/' 
+A project has a name, a start date, and an end date. CHECK
+A project is associated to a project manager with a name, a telephone, and a team. 
+A project manager manages (by starting and terminating) a project and leads a team that is associated with a project.
+Projects receive as input requirements and produce a system. Both requirements and the system have a completion percentage and a description.
+Each team is composed by developers. 
+'/
+
+@enduml
