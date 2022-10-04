@@ -1,0 +1,26 @@
+class User {
+    id : int
+    name : string
+    email : string
+    tasks : List<Task> 
+}
+
+class Task {
+    id : int
+    title : string
+    assignedTo : User
+    description : string
+    state : State 
+    tags : List<Tag>
+    created : DateTime 
+    updated : DateTime
+}
+
+class Tag {
+    id : int
+    name : string
+    tasks : List<Task>
+}
+
+Tag "*" <--> "*" Task
+User "1" <-> "*" Task
