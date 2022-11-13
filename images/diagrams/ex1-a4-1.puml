@@ -1,0 +1,26 @@
+package "Encapsulation" {
+    Methods <--> Data 
+    Data <-> Library
+    Library <-> Methods
+}
+
+class Data {
+    name : String
+    age : Int
+    Meals : List<Meal>
+    etc...
+}
+
+class Library {
+    Microsoft.EntityFrameworkCore
+    System.Data.SqlClient
+    Microsoft.Xunit
+    etc...
+}
+
+class Methods {
+    public void count()
+    public void add()
+    public bool isTrue()
+    public void etc()
+}

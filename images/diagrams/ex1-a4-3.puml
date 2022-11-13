@@ -1,0 +1,11 @@
+state Add
+
+[*] --> Add
+
+Add : adds two objects
+
+int : 2 + 2 = 4
+string : "Hello" + "World" = "HelloWorld"
+
+Add --> int
+Add --> string

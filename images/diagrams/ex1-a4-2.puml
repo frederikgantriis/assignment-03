@@ -1,0 +1,35 @@
+class Parent {
+    name : String
+    age : Int
+
+    public void eat()
+    public void sleep()
+    public string talk()
+}
+
+
+class Child1 extends Parent {
+    name : String
+    age : Int
+    school : String
+    --
+    public void eat()
+    public void sleep()
+    public string talk()
+    ..
+    public void study()
+    public void play()
+}
+
+class Child2 extends Parent {
+    name : String
+    age : Int
+    school : String
+    --
+    public void eat()
+    public void sleep()
+    public string talk()
+    ..
+    public void climbTree()
+    public void party()
+}
